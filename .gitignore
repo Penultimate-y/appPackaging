@@ -1,0 +1,28 @@
+# Python virtual environments
+.venv/
+**/.venv/
+venv/
+env/
+
+# Python caches
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Node
+node_modules/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.log
+
+# Secrets
+*.env
+.env
+*.pfx
+*.key
+*.pem
+
+# Large nested repo / staging area (has its own .git, excluded from this repo)
+appPackaging-staging/

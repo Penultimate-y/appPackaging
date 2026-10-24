@@ -1,0 +1,52 @@
+{
+  "Generation": {
+    "TimestampUtc": "2026-06-15T21:12:25Z",
+    "TimestampLocal": "2026-06-15 16:12:25 -05:00",
+    "GeneratedBy": "DELAWARELIFE\\AA0533",
+    "GeneratedOn": "G1001-PF4KXW5J",
+    "OrchestratorVersion": "1.0.0",
+    "PowerShellVersion": "7.5.5",
+    "OsVersion": "Microsoft Windows NT 10.0.26200.0",
+    "InputSource": "Interactive",
+    "ConfigFilePath": ""
+  },
+  "Inputs": {
+    "AppName": "Snagit",
+    "PackageName": "Snagit12",
+    "AppVersion": "12.0.0.0",
+    "DeploymentType": "Install",
+    "InstallerType": "MSI",
+    "InstallerName": "snagit.msi",
+    "Arguments": "TRANSFORMS=snagit.mst /qb",
+    "ProcessesToStop": [],
+    "DetectionPath": "C:\\Program Files (x86)\\techsmith\\snagit\\snagit32.exe",
+    "SuccessCodes": [
+      0
+    ],
+    "SoftRebootCodes": [
+      3010
+    ],
+    "HardRebootCodes": [
+      1641
+    ],
+    "RetryCodes": [
+      1618
+    ],
+    "CombinedSuccessCodes": [
+      0,
+      3010,
+      1641
+    ]
+  },
+  "GeneratedScript": {
+    "Path": "C:\\Users\\AA0533\\OneDrive - Group 1001 Innovation Solutions, LLC\\Documents\\Software\\Software_Automation\\Generated\\Deploy_Snagit_12.0.0.0_Install.ps1",
+    "Sha256": "8C7F5591DFCCB5A1A72E9D0F4D64DF757E0295E57AD6FB98007D814DA1005F33",
+    "SizeBytes": 12006
+  },
+  "Execution": {
+    "Executed": false,
+    "ExitCode": 0,
+    "DurationSeconds": 0.0,
+    "TimestampUtc": "2026-06-15T21:12:27Z"
+  }
+}

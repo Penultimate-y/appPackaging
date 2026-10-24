@@ -1,0 +1,54 @@
+{
+  "Generation": {
+    "TimestampUtc": "2026-07-01T16:38:50Z",
+    "TimestampLocal": "2026-07-01 11:38:50 -05:00",
+    "GeneratedBy": "DELAWARELIFE\\AA0533",
+    "GeneratedOn": "G1001-PF4KXW5J",
+    "OrchestratorVersion": "1.0.0",
+    "PowerShellVersion": "7.5.5",
+    "OsVersion": "Microsoft Windows NT 10.0.26200.0",
+    "InputSource": "Interactive",
+    "ConfigFilePath": ""
+  },
+  "Inputs": {
+    "AppName": "Bloomberg",
+    "PackageName": "Bloomberg",
+    "AppVersion": "195.4.81.0",
+    "DeploymentType": "Install",
+    "InstallerType": "EXE",
+    "InstallerName": "sotr195_4_81.exe",
+    "Arguments": "/verySilent",
+    "ProcessesToStop": [
+      "winword",
+      "word",
+      "excel",
+      "outlook"
+    ],
+    "DetectionPath": "c:\\blp",
+    "SuccessCodes": [
+      0
+    ],
+    "SoftRebootCodes": [
+      3010
+    ],
+    "HardRebootCodes": [],
+    "RetryCodes": [
+      1618
+    ],
+    "CombinedSuccessCodes": [
+      0,
+      3010
+    ]
+  },
+  "GeneratedScript": {
+    "Path": "C:\\Users\\AA0533\\OneDrive - Group 1001 Innovation Solutions, LLC\\Documents\\Software\\Software_Automation\\Generated\\Deploy_Bloomberg_195.4.81.0_Install.ps1",
+    "Sha256": "C5EA55C2340211B6CC10579683EA8C40314C7FD18599D8181327F6AF80615EFD",
+    "SizeBytes": 11989
+  },
+  "Execution": {
+    "Executed": false,
+    "ExitCode": 0,
+    "DurationSeconds": 0.0,
+    "TimestampUtc": "2026-07-01T16:38:53Z"
+  }
+}

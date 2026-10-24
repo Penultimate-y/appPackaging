@@ -1,0 +1,101 @@
+##================================================
+## MARK: Read Me
+##================================================
+<#
+This template is used to to fill in user entered content to enable dynamic scripting of application deployment
+required info will be
+App name
+App version
+Deployment type: uninstall/install
+application installer: exe or MSI or install files
+reboot require: yes/no
+#>
+
+#Things to change/update - automatic comment blocks
+
+##================================================
+## MARK: Variables
+##================================================
+
+#dynamic variables
+#=================================================
+Param ($applicationName)
+Param ($appVersion)
+Param ($DeploymentType)
+Param ($packageName)
+Param ($arguments)
+Param ($InstallerName)
+Param ($InstallType)
+Param ($successCodes)
+Param ($RetryCode)
+
+$DeviceName = $env:COMPUTERNAME
+
+#Static Variables
+#=================================================
+$TimeStamp = Get-Date -Format "HH:mm:ss"
+$StartTime
+$EndTime
+$exitCode
+$Status
+$ErrorDetails
+
+##================================================
+## MARK: Logging
+##================================================
+
+#dynamic coding for log file name [pacakgeName_Install_timeStamp.log]
+if(test-path "C:\ProgramData\G1001\Packages\$packageName"){
+    $logFile = "C:\ProgramData\g1001\packages\$packageName\[packageName].log"
+}
+else{
+    New-Item -Path "C:\ProgramData\g1001\Packages\$packageName" -ItemType Directory
+    $logFile = "C:\ProgramData\g1001\packages\$packageName$\$packageName.log"
+}
+
+function Write-Log {
+    param (
+        [string]$Message,
+        [ValidateSet("Info", "Success", "Warning", "Error")] [string]$Level = "Info"
+    )
+    $time = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+    $log = "[$time] [$Level] $Message"
+    switch ($Level) {
+        "Info"    { Write-Host $log -ForegroundColor Cyan }
+        "Success" { Write-Host $log -ForegroundColor Green }
+        "Warning" { Write-Host $log -ForegroundColor Yellow }
+        "Error"   { Write-Host $log -ForegroundColor Red }
+    }
+    Add-Content -Path $logFile -Value $log
+}
+
+##================================================
+## MARK: Installation
+##================================================
+
+$StartTime = Get-Date -Format "HH:mm:ss"
+Write-Log "$DeploymentType Proccess starting on $deviceName" Info
+Write-log "Stopping Running Zoom processess"
+Get-Process -Name "Zoom" -ErrorAction SilentlyContinue | Stop-Process -Force
+Write-log "Installing $applicationName $AppVersion" Info
+Start-Process -path $InstallerName -ArgumentList $arguments
+
+##================================================
+## MARK: Post-Installation
+##================================================
+Start-sleep -Seconds 30
+
+if(Test-Path -Path "[pathToInstaller]"){
+    Write-Log "$applicationName detected"Success
+    Write-Log "$exitcode"Success
+    $endtime = get-date -format "HH:mm:ss"
+    Write-log "$endTime Process completed"Info
+    exit = $successCodes
+}
+else{
+    Write-log "$applicationName Not detected"Error
+    write-log "Error $exitcode" Error
+    $endtime = get-date -format "HH:mm:ss"
+    Write-log "$endTime Process completed" info
+    exit 1
+}

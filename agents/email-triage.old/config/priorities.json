@@ -1,0 +1,33 @@
+{
+  "_comment": "Dynamic priority configuration for the email-triage agent. Edit this file anytime to add/remove VIP senders or keywords — no code changes needed. The agent reads this on every run.",
+  "lookback_days": 7,
+
+  "vip_senders": [],
+
+  "buckets": [
+    {
+      "name": "Needs Response",
+      "rank": 1,
+      "description": "Direct questions, explicit asks, deadlines, or anything requiring you to reply.",
+      "keywords": ["please respond", "can you", "asap", "urgent", "deadline", "need your", "approval needed", "sign off", "action required"]
+    },
+    {
+      "name": "Important - Read Only",
+      "rank": 2,
+      "description": "From VIP senders, or financial/legal/medical/HR content that should be read but may not need a reply.",
+      "keywords": ["invoice", "contract", "legal", "medical", "payroll", "benefits", "statement", "confidential"]
+    },
+    {
+      "name": "FYI / Low Priority",
+      "rank": 3,
+      "description": "Newsletters, automated notifications, cc-only threads, digests.",
+      "keywords": ["newsletter", "digest", "no-reply", "noreply", "unsubscribe", "notification"]
+    }
+  ],
+
+  "notes": [
+    "vip_senders: add email addresses (e.g. \"boss@company.com\") - any mail from these always ranks into 'Important - Read Only' or higher regardless of keyword match.",
+    "To add a new bucket, append an object to 'buckets' with a unique 'rank' (lower = higher priority) and a 'keywords' list.",
+    "You can ask the agent directly: 'add vip sender x@y.com' or 'add keyword contract renewal to Needs Response' and it will update this file."
+  ]
+}

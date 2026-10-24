@@ -1,0 +1,16 @@
+{
+  "name": "tanium-atlas-mcp-proxy",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Local stdio-to-HTTP proxy that authenticates to the Tanium Atlas MCP Server using an OAuth 2.0 client-credentials grant and injects the bearer token on every request.",
+  "type": "module",
+  "bin": {
+    "tanium-atlas-mcp-proxy": "proxy.mjs"
+  },
+  "scripts": {
+    "start": "node proxy.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

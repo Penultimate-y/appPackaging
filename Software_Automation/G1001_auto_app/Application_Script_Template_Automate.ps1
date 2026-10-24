@@ -1,0 +1,183 @@
+##================================================
+## MARK: Read Me
+##================================================
+<#
+.SYNOPSIS
+    Dynamic application deployment template.
+.DESCRIPTION
+    Receives parameters from the orchestrator script and performs install/uninstall
+    with proper exit code handling, logging, and detection.
+#>
+
+##================================================
+## MARK: Parameters (must be FIRST executable line)
+##================================================
+[CmdletBinding()]
+Param(
+    [Parameter(Mandatory)] [string]$applicationName,
+    [Parameter(Mandatory)] [string]$packageName,
+    [Parameter(Mandatory)] [string]$appVersion,
+    [Parameter(Mandatory)] [ValidateSet('Install','Uninstall')] [string]$DeploymentType,
+    [Parameter(Mandatory)] [ValidateSet('MSI','EXE')] [string]$installerType,
+    [Parameter(Mandatory)] [string]$installerName,
+    [Parameter()]          [string]$arguments = '',
+    [Parameter(Mandatory)] [int[]] $successCodes = @(0, 3010, 1641),
+    [Parameter()]          [int[]] $retryCodes   = @(1618),
+    [Parameter()]          [string]$processToStop = '',
+    [Parameter(Mandatory)] [string]$detectionPath = ''
+    
+)
+
+##================================================
+## MARK: Static Variables
+##================================================
+$DeviceName = $env:COMPUTERNAME
+$StartTime  = Get-Date -Format "HHmmss"
+$exitCode   = $null
+
+##================================================
+## MARK: Logging Setup
+##================================================
+$logDir = "C:\ProgramData\G1001\Packages\$packageName"
+if (-not (Test-Path -Path $logDir)) {
+    New-Item -Path $logDir -ItemType Directory -Force | Out-Null
+}
+$timeStamp = Get-Date -Format "yyyyMMdd_HHmmss"
+$logFile   = Join-Path $logDir "${packageName}_${DeploymentType}_${timeStamp}.log"
+
+function Write-Log {
+    param(
+        [Parameter(Mandatory)] [string]$Message,
+        [ValidateSet("Info","Success","Warning","Error")] [string]$Level = "Info"
+    )
+    $time = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+    $line = "[$time] [$Level] $Message"
+    switch ($Level) {
+        "Info"    { Write-Host $line -ForegroundColor Cyan }
+        "Success" { Write-Host $line -ForegroundColor Green }
+        "Warning" { Write-Host $line -ForegroundColor Yellow }
+        "Error"   { Write-Host $line -ForegroundColor Red }
+    }
+    Add-Content -Path $logFile -Value $line
+}
+
+##================================================
+## MARK: Pre-Flight
+##================================================
+Write-Log "===== $DeploymentType starting on $DeviceName =====" -Level Info
+Write-Log "Application : $applicationName $appVersion"          -Level Info
+Write-Log "Package     : $packageName"                          -Level Info
+Write-Log "Installer   : $installerName ($installerType)"       -Level Info
+Write-Log "Arguments   : $arguments"                            -Level Info
+Write-Log "Success codes : $($successCodes -join ', ')"         -Level Info
+Write-Log "Retry codes   : $($retryCodes   -join ', ')"         -Level Info
+
+# Stop running processes if specified
+if ($processToStop -and $processToStop.Count -gt 0) {
+    Write-Log "Stopping process(es) matching: $($processToStop -join ', ')" -Level Info
+
+    foreach ($procName in $processToStop) {
+        # Skip blank entries defensively
+        if ([string]::IsNullOrWhiteSpace($procName)) { continue }
+
+        $running = Get-Process -Name $procName -ErrorAction SilentlyContinue
+        if ($running) {
+            $count = ($running | Measure-Object).Count
+            Write-Log "Stopping $count instance(s) of '$procName'..." -Level Info
+            $running | Stop-Process -Force -ErrorAction SilentlyContinue
+
+            # Verify the kill actually worked
+            Start-Sleep -Milliseconds 500
+            $stillRunning = Get-Process -Name $procName -ErrorAction SilentlyContinue
+            if ($stillRunning) {
+                Write-Log "WARNING: '$procName' is still running after stop attempt." -Level Warning
+            }
+            else {
+                Write-Log "'$procName' stopped successfully." -Level Success
+            }
+        }
+        else {
+            Write-Log "No running instance of '$procName' found — skipping." -Level Info
+        }
+    }
+}
+else {
+    Write-Log "No processes specified to stop." -Level Info
+}
+
+##================================================
+## MARK: Build Command Line
+##================================================
+if (-not (Test-Path -Path $installerName)) {
+    Write-Log "Installer file not found: $installerName" -Level Error
+    exit 1
+}
+
+if ($installerType -eq 'MSI') {
+    $msiAction = if ($DeploymentType -eq 'Install') { '/i' } else { '/x' }
+    $msiArgs   = @($msiAction, "`"$installerName`"")
+    if (-not [string]::IsNullOrWhiteSpace($arguments)) {
+        $msiArgs += $arguments
+    }
+    $exeToRun = "$env:SystemRoot\System32\msiexec.exe"
+    $argLine  = $msiArgs -join ' '
+}
+else {
+    # EXE — invoked directly with vendor-specific args
+    $exeToRun = $installerName
+    $argLine  = $arguments
+}
+
+Write-Log "Executing: $exeToRun $argLine" -Level Info
+
+##================================================
+## MARK: Execute
+##================================================
+try {
+    if ([string]::IsNullOrWhiteSpace($argLine)) {
+        $proc = Start-Process -FilePath $exeToRun -Wait -PassThru -NoNewWindow
+    }
+    else {
+        $proc = Start-Process -FilePath $exeToRun -ArgumentList $argLine -Wait -PassThru -NoNewWindow
+    }
+    $exitCode = $proc.ExitCode
+    Write-Log "Process exited with code: $exitCode" -Level Info
+}
+catch {
+    Write-Log "Failed to launch installer: $_" -Level Error
+    exit 1
+}
+
+##================================================
+## MARK: Evaluate Result
+##================================================
+$endTime  = Get-Date
+$duration = ($endTime - $StartTime).TotalSeconds
+
+if ($successCodes -contains $exitCode) {
+    Write-Log "$DeploymentType succeeded (exit code $exitCode is in success list)." -Level Success
+
+    # Optional secondary detection check
+    if (-not [string]::IsNullOrWhiteSpace($detectionPath)) {
+        if (Test-Path -Path $detectionPath) {
+            Write-Log "Detection path verified: $detectionPath" -Level Success
+        }
+        else {
+            Write-Log "WARNING: Exit code indicates success but detection path was not found: $detectionPath" -Level Warning
+        }
+    }
+
+    Write-Log "Duration: $duration seconds" -Level Info
+    Write-Log "===== $DeploymentType complete =====" -Level Info
+    exit $exitCode
+}
+elseif ($retryCodes -contains $exitCode) {
+    Write-Log "$DeploymentType returned retry code $exitCode. Caller should retry later." -Level Warning
+    Write-Log "Duration: $duration seconds" -Level Info
+    exit $exitCode
+}
+else {
+    Write-Log "$DeploymentType FAILED with exit code $exitCode." -Level Error
+    Write-Log "Duration: $duration seconds" -Level Info
+    exit $exitCode
+}

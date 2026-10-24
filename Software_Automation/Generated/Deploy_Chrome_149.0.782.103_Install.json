@@ -1,0 +1,54 @@
+{
+  "Generation": {
+    "TimestampUtc": "2026-06-10T16:53:31Z",
+    "TimestampLocal": "2026-06-10 11:53:31 -05:00",
+    "GeneratedBy": "DELAWARELIFE\\AA0533",
+    "GeneratedOn": "G1001-PF4KXW5J",
+    "OrchestratorVersion": "1.0.0",
+    "PowerShellVersion": "7.5.5",
+    "OsVersion": "Microsoft Windows NT 10.0.26200.0",
+    "InputSource": "Interactive",
+    "ConfigFilePath": ""
+  },
+  "Inputs": {
+    "AppName": "Chrome",
+    "PackageName": "GoogleCHromeV144",
+    "AppVersion": "149.0.782.103",
+    "DeploymentType": "Install",
+    "InstallerType": "MSI",
+    "InstallerName": "googlechromestandaloneenterprise64.msi",
+    "Arguments": "/qn",
+    "ProcessesToStop": [
+      "Chrome"
+    ],
+    "DetectionPath": "",
+    "SuccessCodes": [
+      0
+    ],
+    "SoftRebootCodes": [
+      3010
+    ],
+    "HardRebootCodes": [
+      1641
+    ],
+    "RetryCodes": [
+      1618
+    ],
+    "CombinedSuccessCodes": [
+      0,
+      3010,
+      1641
+    ]
+  },
+  "GeneratedScript": {
+    "Path": "C:\\Users\\AA0533\\OneDrive - Group 1001 Innovation Solutions, LLC\\Documents\\Software\\Software_Automation\\Generated\\Deploy_Chrome_149.0.782.103_Install.ps1",
+    "Sha256": "812F47D812D39229861A6A82F81B087789F429B969D0DD2F9F6DBDB555EF49FB",
+    "SizeBytes": 11981
+  },
+  "Execution": {
+    "Executed": false,
+    "ExitCode": 0,
+    "DurationSeconds": 0.0,
+    "TimestampUtc": "2026-06-10T16:53:33Z"
+  }
+}

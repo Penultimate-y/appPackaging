@@ -1,0 +1,18 @@
+[
+  {
+    "id": "rule-1",
+    "displayName": "Move build notifications",
+    "sequence": 10,
+    "isEnabled": true,
+    "conditions": { "senderContains": ["builds@ci.example.com"] },
+    "actions": { "moveToFolder": "folder-ci", "stopProcessingRules": true }
+  },
+  {
+    "id": "rule-2",
+    "displayName": "Move newsletters",
+    "sequence": 20,
+    "isEnabled": true,
+    "conditions": { "senderContains": ["newsletter@"] },
+    "actions": { "moveToFolder": "folder-old-target", "stopProcessingRules": true }
+  }
+]

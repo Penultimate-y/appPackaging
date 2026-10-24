@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "outlook-readonly-mcp"
+version = "0.1.0"
+description = "Read-only MCP server for classic desktop Outlook on Windows, via COM automation. No send/delete/move/write tools exist in this package."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Rohit" }]
+keywords = ["mcp", "outlook", "claude", "model-context-protocol", "read-only", "com-automation"]
+classifiers = [
+    "Operating System :: Microsoft :: Windows",
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+]
+dependencies = [
+    "mcp[cli]>=1.2.0",
+    "pywin32>=306; sys_platform == 'win32'",
+]
+
+[project.scripts]
+outlook-readonly-mcp = "outlook_readonly_mcp.server:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

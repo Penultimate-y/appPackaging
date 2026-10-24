@@ -1,0 +1,102 @@
+[
+  {
+    "id": "msg-urgent-unread",
+    "subject": "URGENT: production database failover needed",
+    "bodyPreview": "The primary replica is down, we need a decision immediately.",
+    "from": { "emailAddress": { "name": "Ops Team", "address": "ops@example.com" } },
+    "receivedDateTime": "2026-07-06T08:15:00Z",
+    "isRead": false,
+    "hasAttachments": false,
+    "importance": "high"
+  },
+  {
+    "id": "msg-urgent-read",
+    "subject": "Urgent: contract signature required",
+    "bodyPreview": "Legal needs your signature on the renewal contract.",
+    "from": { "emailAddress": { "name": "Legal Dept", "address": "legal@example.com" } },
+    "receivedDateTime": "2026-07-06T07:50:00Z",
+    "isRead": true,
+    "hasAttachments": true,
+    "importance": "normal"
+  },
+  {
+    "id": "msg-vip",
+    "subject": "Quarterly numbers",
+    "bodyPreview": "Attaching the quarterly numbers for the board meeting.",
+    "from": { "emailAddress": { "name": "VIP Person", "address": "vip@example.com" } },
+    "receivedDateTime": "2026-07-06T07:30:00Z",
+    "isRead": false,
+    "hasAttachments": true,
+    "importance": "normal"
+  },
+  {
+    "id": "msg-action-keyword",
+    "subject": "Budget spreadsheet — please review before Friday",
+    "bodyPreview": "Could you check the totals on tab 3?",
+    "from": { "emailAddress": { "name": "Colleague", "address": "colleague@example.com" } },
+    "receivedDateTime": "2026-07-06T06:45:00Z",
+    "isRead": false,
+    "hasAttachments": true,
+    "importance": "normal"
+  },
+  {
+    "id": "msg-action-read",
+    "subject": "Please approve the vendor onboarding",
+    "bodyPreview": "Waiting for your approval to proceed with onboarding.",
+    "from": { "emailAddress": { "name": "Procurement", "address": "procurement@example.com" } },
+    "receivedDateTime": "2026-07-06T06:20:00Z",
+    "isRead": true,
+    "hasAttachments": false,
+    "importance": "normal"
+  },
+  {
+    "id": "msg-newsletter-sender",
+    "subject": "Your weekly product updates",
+    "bodyPreview": "Here is everything new this week.",
+    "from": { "emailAddress": { "name": "Product News", "address": "no-reply@news.example.com" } },
+    "receivedDateTime": "2026-07-06T05:00:00Z",
+    "isRead": false,
+    "hasAttachments": false,
+    "importance": "low"
+  },
+  {
+    "id": "msg-newsletter-keyword",
+    "subject": "Industry insights, July edition",
+    "bodyPreview": "Top stories this month... unsubscribe at any time.",
+    "from": { "emailAddress": { "name": "Insights", "address": "editor@insights.example.com" } },
+    "receivedDateTime": "2026-07-06T04:30:00Z",
+    "isRead": false,
+    "hasAttachments": false,
+    "importance": "normal"
+  },
+  {
+    "id": "msg-self",
+    "subject": "Note to self: expense report",
+    "bodyPreview": "Remember to file the expense report.",
+    "from": { "emailAddress": { "name": "Mailbox Owner", "address": "user@example.com" } },
+    "receivedDateTime": "2026-07-06T04:00:00Z",
+    "isRead": false,
+    "hasAttachments": false,
+    "importance": "normal"
+  },
+  {
+    "id": "msg-fyi",
+    "subject": "Team offsite photos",
+    "bodyPreview": "Sharing the photos from last week's offsite.",
+    "from": { "emailAddress": { "name": "HR", "address": "hr@example.com" } },
+    "receivedDateTime": "2026-07-06T03:30:00Z",
+    "isRead": false,
+    "hasAttachments": true,
+    "importance": "normal"
+  },
+  {
+    "id": "msg-noise-urgent-bait",
+    "subject": "URGENT: your account needs attention",
+    "bodyPreview": "Click here to verify your account now.",
+    "from": { "emailAddress": { "name": "Notifications", "address": "notifications@spam.example.com" } },
+    "receivedDateTime": "2026-07-06T03:00:00Z",
+    "isRead": false,
+    "hasAttachments": false,
+    "importance": "normal"
+  }
+]

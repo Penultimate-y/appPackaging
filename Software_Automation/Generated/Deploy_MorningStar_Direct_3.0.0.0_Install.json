@@ -1,0 +1,52 @@
+{
+  "Generation": {
+    "TimestampUtc": "2026-06-03T17:28:06Z",
+    "TimestampLocal": "2026-06-03 12:28:06 -05:00",
+    "GeneratedBy": "DELAWARELIFE\\AA0533",
+    "GeneratedOn": "G1001-PF4KXW5J",
+    "OrchestratorVersion": "1.0.0",
+    "PowerShellVersion": "7.5.5",
+    "OsVersion": "Microsoft Windows NT 10.0.26200.0",
+    "InputSource": "Interactive",
+    "ConfigFilePath": ""
+  },
+  "Inputs": {
+    "AppName": "MorningStar Direct",
+    "PackageName": "MorningStar",
+    "AppVersion": "3.0.0.0",
+    "DeploymentType": "Install",
+    "InstallerType": "MSI",
+    "InstallerName": "direct.msi",
+    "Arguments": "/qn -wait",
+    "ProcessesToStop": [],
+    "DetectionPath": "",
+    "SuccessCodes": [
+      0
+    ],
+    "SoftRebootCodes": [
+      3010
+    ],
+    "HardRebootCodes": [
+      1641
+    ],
+    "RetryCodes": [
+      1618
+    ],
+    "CombinedSuccessCodes": [
+      0,
+      3010,
+      1641
+    ]
+  },
+  "GeneratedScript": {
+    "Path": "C:\\Users\\AA0533\\OneDrive - Group 1001 Innovation Solutions, LLC\\Documents\\Software\\Software_Automation\\Generated\\Deploy_MorningStar_Direct_3.0.0.0_Install.ps1",
+    "Sha256": "0387F1A9A055DBFE23322A4388F9B5E03416C55F03420EAF54CA6BA2040BE110",
+    "SizeBytes": 7091
+  },
+  "Execution": {
+    "Executed": false,
+    "ExitCode": 0,
+    "DurationSeconds": 0.0,
+    "TimestampUtc": "2026-06-03T17:28:09Z"
+  }
+}

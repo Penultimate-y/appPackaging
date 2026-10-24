@@ -1,0 +1,5 @@
+[
+  { "id": "folder-inbox", "displayName": "Inbox" },
+  { "id": "folder-ci", "displayName": "CI Notifications" },
+  { "id": "folder-news", "displayName": "Newsletters" }
+]

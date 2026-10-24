@@ -1,0 +1,52 @@
+{
+  "Generation": {
+    "TimestampUtc": "2026-06-09T16:56:07Z",
+    "TimestampLocal": "2026-06-09 11:56:07 -05:00",
+    "GeneratedBy": "DELAWARELIFE\\AA0533",
+    "GeneratedOn": "G1001-PF4KXW5J",
+    "OrchestratorVersion": "1.0.0",
+    "PowerShellVersion": "7.5.5",
+    "OsVersion": "Microsoft Windows NT 10.0.26200.0",
+    "InputSource": "Interactive",
+    "ConfigFilePath": ""
+  },
+  "Inputs": {
+    "AppName": "Optro",
+    "PackageName": "OptroSync",
+    "AppVersion": "3.0.2.0",
+    "DeploymentType": "Install",
+    "InstallerType": "MSI",
+    "InstallerName": "OptroSyncSetup3.0.1-x64.msi",
+    "Arguments": "/qn",
+    "ProcessesToStop": [],
+    "DetectionPath": "C:\\Program Files\\AuditBoard Sync",
+    "SuccessCodes": [
+      0
+    ],
+    "SoftRebootCodes": [
+      3010
+    ],
+    "HardRebootCodes": [
+      1641
+    ],
+    "RetryCodes": [
+      1618
+    ],
+    "CombinedSuccessCodes": [
+      0,
+      3010,
+      1641
+    ]
+  },
+  "GeneratedScript": {
+    "Path": "C:\\Users\\AA0533\\OneDrive - Group 1001 Innovation Solutions, LLC\\Documents\\Software\\Software_Automation\\Generated\\Deploy_Optro_3.0.2.0_Install.ps1",
+    "Sha256": "6B70E983A423C5F6669211A8FA6A86C2928378A5295618460AD076DD121CE18C",
+    "SizeBytes": 7102
+  },
+  "Execution": {
+    "Executed": false,
+    "ExitCode": 0,
+    "DurationSeconds": 0.0,
+    "TimestampUtc": "2026-06-09T16:56:10Z"
+  }
+}
