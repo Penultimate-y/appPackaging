@@ -1,0 +1,18 @@
+# Binary installers and media — fetched at install time (download-at-install-time pattern)
+*.msi
+*.exe
+*.msix
+*.msp
+*.cab
+*.zip
+*.iso
+*.vhd
+*.wim
+
+# Intune build artifacts
+*.intunewin
+
+# Local/test output
+Preflight-Results-*/
+Test-Results-*/
+_intunewin_out/

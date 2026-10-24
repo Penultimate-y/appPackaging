@@ -1,0 +1,41 @@
+{
+  "AppInfo": {
+    "Vendor": "Martin Prikryl",
+    "Name": "WinSCP",
+    "Version": "Latest",
+    "Architecture": "x86",
+    "Category": "Network Tools"
+  },
+  "Installation": {
+    "Type": "Download",
+    "Resolver": {
+      "Type": "FilesOnly",
+      "SourceUrl": "https://winscp.net/eng/download.php (use the 'MSI installer' link, which WinSCP publishes specifically for automated deployment)"
+    },
+    "InstallerType": "MSI",
+    "InstallerFile": "WinSCP.msi",
+    "SilentArgs": [],
+    "ProcessesToClose": [
+      "WinSCP"
+    ],
+    "InstallContext": "System",
+    "RequireAdmin": true,
+    "OfflineFallback": "Stage the installer in the package Files folder to bypass the download."
+  },
+  "Uninstall": {
+    "Type": "RegistrySearch",
+    "DisplayNamePattern": "^WinSCP"
+  },
+  "Detection": {
+    "Type": "RegistrySearch",
+    "DisplayNamePattern": "^WinSCP"
+  },
+  "Provenance": {
+    "LegacySources": [
+      "legacy.WinSCP"
+    ],
+    "UrlVerified": false,
+    "Notes": "OFFLINE-ONLY package - media is staged in Files\\ rather than downloaded. Verified 2026-09-18: the winscp/winscp GitHub repo publishes no Releases; cdn.winscp.net returns HTTP 403; and winscp.net/download/WinSCP-latest-Setup.exe 302-redirects to a plaintext http:// SourceForge path that returns 404, so it must not be used. Uses the vendor MSI (not the Inno Setup .exe) because the MSI already sets ALLUSERS=1 and needs no silent switches. Staged media: WinSCP-6.3.5.msi, ProductCode {819533C9-2894-4224-A2A8-763058A9351C}, Authenticode-signed by Martin Prikryl."
+  }
+}
+

@@ -1,0 +1,47 @@
+{
+  "AppInfo": {
+    "Vendor": "Microsoft",
+    "Name": ".NET 6 Hosting Bundle",
+    "Version": "Latest",
+    "Architecture": "x64",
+    "Category": "Runtime"
+  },
+  "Installation": {
+    "Type": "Download",
+    "Resolver": {
+      "Type": "DirectUrl",
+      "Url": "https://aka.ms/dotnet/6.0/dotnet-hosting-win.exe"
+    },
+    "InstallerType": "EXE",
+    "InstallerFile": "dotnet-hosting-6-win.exe",
+    "SilentArgs": [
+      "/install",
+      "/quiet",
+      "/norestart"
+    ],
+    "ProcessesToClose": [],
+    "InstallContext": "System",
+    "RequireAdmin": true,
+    "OfflineFallback": "Stage the installer in the package Files folder to bypass the download."
+  },
+  "Uninstall": {
+    "Type": "SelfExe",
+    "Args": [
+      "/uninstall",
+      "/quiet",
+      "/norestart"
+    ]
+  },
+  "Detection": {
+    "Type": "RegistrySearch",
+    "DisplayNamePattern": "Microsoft \\.NET 6\\.\\d+\\.\\d+ - Windows Server Hosting"
+  },
+  "Provenance": {
+    "LegacySources": [
+      "legacy.net core 6"
+    ],
+    "UrlVerified": true,
+    "Notes": ".NET 6 is out of support - deploy only where an existing IIS-hosted app still requires it. Installing the hosting bundle restarts IIS."
+  }
+}
+

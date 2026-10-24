@@ -1,0 +1,49 @@
+{
+  "AppInfo": {
+    "Vendor": "Microsoft",
+    "Name": "PowerShell 7",
+    "Version": "Latest",
+    "Architecture": "x64",
+    "Category": "Developer Tools"
+  },
+  "Installation": {
+    "Type": "Download",
+    "Resolver": {
+      "Type": "GitHubRelease",
+      "Repo": "PowerShell/PowerShell",
+      "AssetPattern": "^PowerShell-[\\d\\.]+-win-x64\\.msi$"
+    },
+    "InstallerType": "MSI",
+    "InstallerFile": "PowerShell-win-x64.msi",
+    "SilentArgs": [
+      "ADD_EXPLORER_CONTEXT_MENU_OPENPOWERSHELL=1",
+      "ENABLE_PSREMOTING=0",
+      "REGISTER_MANIFEST=1",
+      "USE_MU=1",
+      "ENABLE_MU=1"
+    ],
+    "ProcessesToClose": [
+      "pwsh"
+    ],
+    "InstallContext": "System",
+    "RequireAdmin": true,
+    "OfflineFallback": "Stage the installer in the package Files folder to bypass the download."
+  },
+  "Uninstall": {
+    "Type": "RegistrySearch",
+    "DisplayNamePattern": "^PowerShell 7-x64$"
+  },
+  "Detection": {
+    "Type": "File",
+    "Path": "$env:ProgramFiles\\PowerShell\\7\\pwsh.exe"
+  },
+  "Provenance": {
+    "LegacySources": [
+      "legacy.PowerShell",
+      "legacy.WindowsPowerShell"
+    ],
+    "UrlVerified": true,
+    "Notes": "Stable (non-preview) release only. AGENTS.md requires PowerShell 7.2+."
+  }
+}
+

@@ -1,0 +1,41 @@
+{
+  "AppInfo": {
+    "Vendor": "Microsoft",
+    "Name": "Azure Storage Explorer",
+    "Version": "Latest",
+    "Architecture": "x64",
+    "Category": "Developer Tools"
+  },
+  "Installation": {
+    "Type": "Download",
+    "Resolver": {
+      "Type": "DirectUrl",
+      "Url": "https://go.microsoft.com/fwlink/?LinkId=708343"
+    },
+    "InstallerType": "EXE",
+    "InstallerFile": "StorageExplorer-windows-x64.exe",
+    "SilentArgs": [
+      "/S"
+    ],
+    "ProcessesToClose": [
+      "StorageExplorer"
+    ],
+    "InstallContext": "System",
+    "RequireAdmin": true,
+    "OfflineFallback": "Stage the installer in the package Files folder to bypass the download."
+  },
+  "Uninstall": {
+    "Type": "RegistrySearch",
+    "DisplayNamePattern": "Storage Explorer"
+  },
+  "Detection": {
+    "Type": "RegistrySearch",
+    "DisplayNamePattern": "Storage Explorer"
+  },
+  "Provenance": {
+    "LegacySources": [],
+    "UrlVerified": true,
+    "Notes": "The fwlink resolves to the current x64 build. Preferred over the GitHub release feed, whose first asset is arm64."
+  }
+}
+

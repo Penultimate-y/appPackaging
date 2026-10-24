@@ -1,0 +1,48 @@
+{
+  "AppInfo": {
+    "Vendor": "Codec Guide",
+    "Name": "K-Lite Codec Pack Standard",
+    "Version": "Latest",
+    "Architecture": "x64",
+    "Category": "Media"
+  },
+  "Installation": {
+    "Type": "Download",
+    "Resolver": {
+      "Type": "PinnedUrl",
+      "Url": "https://files3.codecguide.com/K-Lite_Codec_Pack_1810_Standard.exe",
+      "PinnedVersion": "1810"
+    },
+    "InstallerType": "EXE",
+    "InstallerFile": "klite-standard-setup.exe",
+    "SilentArgs": [
+      "/VERYSILENT",
+      "/NORESTART",
+      "/SP-",
+      "/NOCANCEL"
+    ],
+    "ProcessesToClose": [
+      "mpc-hc64",
+      "mpc-be64"
+    ],
+    "InstallContext": "System",
+    "RequireAdmin": true,
+    "OfflineFallback": "Stage the installer in the package Files folder to bypass the download."
+  },
+  "Uninstall": {
+    "Type": "RegistrySearch",
+    "DisplayNamePattern": "K-Lite Codec Pack"
+  },
+  "Detection": {
+    "Type": "RegistrySearch",
+    "DisplayNamePattern": "K-Lite Codec Pack"
+  },
+  "Provenance": {
+    "LegacySources": [
+      "legacy.Andretti_Installs"
+    ],
+    "UrlVerified": false,
+    "Notes": "URL NOT VERIFIED and version-pinned. Codec Guide rotates build numbers and mirror hostnames frequently; prefer the Files\\ offline path for this one."
+  }
+}
+

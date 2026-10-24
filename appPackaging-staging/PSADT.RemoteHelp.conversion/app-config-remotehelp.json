@@ -1,0 +1,42 @@
+{
+  "AppInfo": {
+    "Vendor": "Microsoft",
+    "Name": "Remote Help",
+    "Version": "Latest",
+    "Architecture": "x64",
+    "Category": "Device Management"
+  },
+  "Installation": {
+    "Type": "Download",
+    "Resolver": {
+      "Type": "DirectUrl",
+      "Url": "https://aka.ms/downloadremotehelp"
+    },
+    "InstallerType": "EXE",
+    "InstallerFile": "remotehelpinstaller.exe",
+    "SilentArgs": [
+      "/quiet",
+      "AcceptTerms=1"
+    ],
+    "ProcessesToClose": [
+      "RemoteHelp"
+    ],
+    "InstallContext": "System",
+    "RequireAdmin": true,
+    "OfflineFallback": "Stage the installer in the package Files folder to bypass the download."
+  },
+  "Uninstall": {
+    "Type": "RegistrySearch",
+    "DisplayNamePattern": "Remote Help"
+  },
+  "Detection": {
+    "Type": "RegistrySearch",
+    "DisplayNamePattern": "Remote Help"
+  },
+  "Provenance": {
+    "LegacySources": [],
+    "UrlVerified": true,
+    "Notes": "Microsoft ships Remote Help through an evergreen aka.ms link served from the Windows Update catalog CDN. AcceptTerms=1 is required for unattended install."
+  }
+}
+

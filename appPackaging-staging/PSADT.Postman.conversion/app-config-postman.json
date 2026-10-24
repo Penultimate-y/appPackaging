@@ -1,0 +1,41 @@
+{
+  "AppInfo": {
+    "Vendor": "Postman",
+    "Name": "Postman",
+    "Version": "Latest",
+    "Architecture": "x64",
+    "Category": "Developer Tools"
+  },
+  "Installation": {
+    "Type": "Download",
+    "Resolver": {
+      "Type": "DirectUrl",
+      "Url": "https://dl.pstmn.io/download/latest/win64"
+    },
+    "InstallerType": "EXE",
+    "InstallerFile": "PostmanSetup-x64.exe",
+    "SilentArgs": [
+      "--silent"
+    ],
+    "ProcessesToClose": [
+      "Postman"
+    ],
+    "InstallContext": "User",
+    "RequireAdmin": false,
+    "OfflineFallback": "Stage the installer in the package Files folder to bypass the download."
+  },
+  "Uninstall": {
+    "Type": "RegistrySearch",
+    "DisplayNamePattern": "^Postman"
+  },
+  "Detection": {
+    "Type": "File",
+    "Path": "$env:LOCALAPPDATA\\Postman\\Postman.exe"
+  },
+  "Provenance": {
+    "LegacySources": [],
+    "UrlVerified": true,
+    "Notes": "Squirrel per-user installer. Intune currently carries 10.21.0. Postman syncs collections to its cloud by default - confirm that is acceptable for your data policy."
+  }
+}
+

@@ -1,0 +1,42 @@
+{
+  "AppInfo": {
+    "Vendor": "Azul Systems",
+    "Name": "Zulu JDK 11",
+    "Version": "Latest",
+    "Architecture": "x64",
+    "Category": "Runtime"
+  },
+  "Installation": {
+    "Type": "Download",
+    "Resolver": {
+      "Type": "AzulZulu",
+      "JavaVersion": "11"
+    },
+    "InstallerType": "MSI",
+    "InstallerFile": "zulu-jdk11-x64.msi",
+    "SilentArgs": [
+      "ADDLOCAL=FeatureJavaHome,FeatureEnvironment,FeatureJarFileRunWith,FeatureJavaSoft"
+    ],
+    "ProcessesToClose": [
+      "java",
+      "javaw"
+    ],
+    "InstallContext": "System",
+    "RequireAdmin": true,
+    "OfflineFallback": "Stage the installer in the package Files folder to bypass the download."
+  },
+  "Uninstall": {
+    "Type": "RegistrySearch",
+    "DisplayNamePattern": "Zulu 11"
+  },
+  "Detection": {
+    "Type": "RegistrySearch",
+    "DisplayNamePattern": "Zulu 11"
+  },
+  "Provenance": {
+    "LegacySources": [],
+    "UrlVerified": true,
+    "Notes": "Kept for applications still pinned to Java 11. Installing multiple Zulu JDKs side by side means the LAST one installed wins JAVA_HOME - sequence assignments deliberately if devices need both 11 and 21."
+  }
+}
+

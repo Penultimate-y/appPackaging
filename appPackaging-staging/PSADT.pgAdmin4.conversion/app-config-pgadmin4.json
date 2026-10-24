@@ -1,0 +1,45 @@
+{
+  "AppInfo": {
+    "Vendor": "PostgreSQL Global Development Group",
+    "Name": "pgAdmin 4",
+    "Version": "Latest",
+    "Architecture": "x64",
+    "Category": "Developer Tools"
+  },
+  "Installation": {
+    "Type": "Download",
+    "Resolver": {
+      "Type": "PgAdmin4"
+    },
+    "InstallerType": "EXE",
+    "InstallerFile": "pgadmin4-x64.exe",
+    "SilentArgs": [
+      "/VERYSILENT",
+      "/NORESTART",
+      "/ALLUSERS"
+    ],
+    "ProcessesToClose": [
+      "pgAdmin4"
+    ],
+    "InstallContext": "System",
+    "RequireAdmin": true,
+    "OfflineFallback": "Stage the installer in the package Files folder to bypass the download."
+  },
+  "Uninstall": {
+    "Type": "RegistrySearch",
+    "DisplayNamePattern": "pgAdmin 4"
+  },
+  "Detection": {
+    "Type": "RegistrySearch",
+    "DisplayNamePattern": "pgAdmin 4"
+  },
+  "Provenance": {
+    "LegacySources": [
+      "legacy.PGAdmin",
+      "legacy.Andretti_Installs"
+    ],
+    "UrlVerified": true,
+    "Notes": "Resolves latest vX.Y from the PostgreSQL FTP pgadmin4 index, then the windows/ sub-index."
+  }
+}
+

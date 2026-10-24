@@ -1,0 +1,42 @@
+{
+  "AppInfo": {
+    "Vendor": "Microsoft",
+    "Name": "OLE DB Driver 19 for SQL Server",
+    "Version": "Latest",
+    "Architecture": "x64",
+    "Category": "Data Connectivity"
+  },
+  "Installation": {
+    "Type": "Download",
+    "Resolver": {
+      "Type": "DirectUrl",
+      "Url": "https://go.microsoft.com/fwlink/?linkid=2278038"
+    },
+    "InstallerType": "MSI",
+    "InstallerFile": "msoledbsql19.msi",
+    "SilentArgs": [
+      "IACCEPTMSOLEDBSQLLICENSETERMS=YES",
+      "ADDLOCAL=ALL"
+    ],
+    "ProcessesToClose": [],
+    "InstallContext": "System",
+    "RequireAdmin": true,
+    "OfflineFallback": "Stage the installer in the package Files folder to bypass the download."
+  },
+  "Uninstall": {
+    "Type": "RegistrySearch",
+    "DisplayNamePattern": "Microsoft OLE DB Driver .* for SQL Server"
+  },
+  "Detection": {
+    "Type": "RegistrySearch",
+    "DisplayNamePattern": "Microsoft OLE DB Driver .* for SQL Server"
+  },
+  "Provenance": {
+    "LegacySources": [
+      "legacy.OLE Driver 19"
+    ],
+    "UrlVerified": true,
+    "Notes": "MSOLEDBSQL 19.x. Confirm the fwlink still points at 19.x before broad rollout - Microsoft rotates these links across major versions."
+  }
+}
+

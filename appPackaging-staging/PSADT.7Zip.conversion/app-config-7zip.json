@@ -1,0 +1,41 @@
+{
+  "AppInfo": {
+    "Vendor": "Igor Pavlov",
+    "Name": "7-Zip",
+    "Version": "Latest",
+    "Architecture": "x64",
+    "Category": "Utilities"
+  },
+  "Installation": {
+    "Type": "Download",
+    "Resolver": {
+      "Type": "GitHubRelease",
+      "Repo": "ip7z/7zip",
+      "AssetPattern": "^7z\\d+-x64\\.msi$"
+    },
+    "InstallerType": "MSI",
+    "InstallerFile": "7zip-x64.msi",
+    "SilentArgs": [],
+    "ProcessesToClose": [
+      "7zFM",
+      "7zG"
+    ],
+    "InstallContext": "System",
+    "RequireAdmin": true,
+    "OfflineFallback": "Stage the installer in the package Files folder to bypass the download."
+  },
+  "Uninstall": {
+    "Type": "RegistrySearch",
+    "DisplayNamePattern": "^7-Zip"
+  },
+  "Detection": {
+    "Type": "File",
+    "Path": "$env:ProgramFiles\\7-Zip\\7zFM.exe"
+  },
+  "Provenance": {
+    "LegacySources": [],
+    "UrlVerified": true,
+    "Notes": "Intune currently carries 7-Zip 22.01 (2022) - several years of security fixes behind. This package tracks the current release automatically."
+  }
+}
+

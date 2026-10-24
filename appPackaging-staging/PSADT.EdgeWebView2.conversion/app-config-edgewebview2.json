@@ -1,0 +1,42 @@
+{
+  "AppInfo": {
+    "Vendor": "Microsoft",
+    "Name": "Edge WebView2 Runtime",
+    "Version": "Latest",
+    "Architecture": "x64",
+    "Category": "Runtime"
+  },
+  "Installation": {
+    "Type": "Download",
+    "Resolver": {
+      "Type": "DirectUrl",
+      "Url": "https://go.microsoft.com/fwlink/p/?LinkId=2124703"
+    },
+    "InstallerType": "EXE",
+    "InstallerFile": "MicrosoftEdgeWebview2Setup.exe",
+    "SilentArgs": [
+      "/silent",
+      "/install"
+    ],
+    "ProcessesToClose": [],
+    "InstallContext": "System",
+    "RequireAdmin": true,
+    "OfflineFallback": "Stage the installer in the package Files folder to bypass the download."
+  },
+  "Uninstall": {
+    "Type": "NotSupported",
+    "Reason": "WebView2 Evergreen Runtime is a servicing component; removal is not supported by Microsoft on Windows 11."
+  },
+  "Detection": {
+    "Type": "RegistrySearch",
+    "DisplayNamePattern": "Microsoft Edge WebView2 Runtime"
+  },
+  "Provenance": {
+    "LegacySources": [
+      "legacy.WebView2"
+    ],
+    "UrlVerified": true,
+    "Notes": "Evergreen bootstrapper. Already present in-box on Windows 11; install is a no-op upgrade there."
+  }
+}
+

@@ -1,0 +1,44 @@
+{
+  "AppInfo": {
+    "Vendor": "Simon Tatham",
+    "Name": "PuTTY",
+    "Version": "Latest",
+    "Architecture": "x64",
+    "Category": "Network Tools"
+  },
+  "Installation": {
+    "Type": "Download",
+    "Resolver": {
+      "Type": "DirectUrl",
+      "Url": "https://the.earth.li/~sgtatham/putty/latest/w64/putty-64bit-installer.msi"
+    },
+    "InstallerType": "MSI",
+    "InstallerFile": "putty-64bit-installer.msi",
+    "SilentArgs": [
+      "ALLUSERS=1"
+    ],
+    "ProcessesToClose": [
+      "putty",
+      "pscp",
+      "psftp",
+      "pageant"
+    ],
+    "InstallContext": "System",
+    "RequireAdmin": true,
+    "OfflineFallback": "Stage the installer in the package Files folder to bypass the download."
+  },
+  "Uninstall": {
+    "Type": "RegistrySearch",
+    "DisplayNamePattern": "^PuTTY"
+  },
+  "Detection": {
+    "Type": "File",
+    "Path": "$env:ProgramFiles\\PuTTY\\putty.exe"
+  },
+  "Provenance": {
+    "LegacySources": [],
+    "UrlVerified": true,
+    "Notes": "The author's /latest/ path is an evergreen redirect to the current release (resolved to 0.85 at time of packaging)."
+  }
+}
+

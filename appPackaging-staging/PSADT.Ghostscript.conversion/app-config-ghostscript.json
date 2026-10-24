@@ -1,0 +1,43 @@
+{
+  "AppInfo": {
+    "Vendor": "Artifex Software",
+    "Name": "Ghostscript",
+    "Version": "Latest",
+    "Architecture": "x64",
+    "Category": "Utilities"
+  },
+  "Installation": {
+    "Type": "Download",
+    "Resolver": {
+      "Type": "GitHubRelease",
+      "Repo": "ArtifexSoftware/ghostpdl-downloads",
+      "AssetPattern": "^gs\\d+w64\\.exe$"
+    },
+    "InstallerType": "EXE",
+    "InstallerFile": "ghostscript-w64.exe",
+    "SilentArgs": [
+      "/S"
+    ],
+    "ProcessesToClose": [
+      "gswin64",
+      "gswin64c"
+    ],
+    "InstallContext": "System",
+    "RequireAdmin": true,
+    "OfflineFallback": "Stage the installer in the package Files folder to bypass the download."
+  },
+  "Uninstall": {
+    "Type": "RegistrySearch",
+    "DisplayNamePattern": "GPL Ghostscript|Ghostscript"
+  },
+  "Detection": {
+    "Type": "RegistrySearch",
+    "DisplayNamePattern": "GPL Ghostscript|Ghostscript"
+  },
+  "Provenance": {
+    "LegacySources": [],
+    "UrlVerified": true,
+    "Notes": "AGPL build from Artifex's official GitHub downloads repo. Commercial redistribution of Ghostscript requires an Artifex licence - internal use under AGPL is fine."
+  }
+}
+

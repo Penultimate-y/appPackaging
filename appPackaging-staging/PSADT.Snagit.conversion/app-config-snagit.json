@@ -1,0 +1,47 @@
+{
+  "AppInfo": {
+    "Vendor": "TechSmith",
+    "Name": "Snagit",
+    "Version": "Latest",
+    "Architecture": "x64",
+    "Category": "Productivity"
+  },
+  "Installation": {
+    "Type": "Download",
+    "Resolver": {
+      "Type": "DirectUrl",
+      "Url": "https://download.techsmith.com/snagit/releases/snagit.msi"
+    },
+    "InstallerType": "MSI",
+    "InstallerFile": "snagit.msi",
+    "SilentArgs": [
+      "ALLUSERS=1",
+      "TSC_SUPPRESS_REBOOT=1",
+      "DESKTOP_SHORTCUT=0"
+    ],
+    "ProcessesToClose": [
+      "SnagitEditor",
+      "Snagit32",
+      "SnagitCapture"
+    ],
+    "InstallContext": "System",
+    "RequireAdmin": true,
+    "OfflineFallback": "Stage the installer in the package Files folder to bypass the download."
+  },
+  "Uninstall": {
+    "Type": "RegistrySearch",
+    "DisplayNamePattern": "^Snagit"
+  },
+  "Detection": {
+    "Type": "RegistrySearch",
+    "DisplayNamePattern": "^Snagit"
+  },
+  "Provenance": {
+    "LegacySources": [
+      "legacy.SnagIt"
+    ],
+    "UrlVerified": true,
+    "Notes": "TechSmith publishes an evergreen unversioned MSI at this path. Snagit is a LICENSED product - add your volume-licence properties (TSC_SRIAL / TSC_KEY) to the silent switches, or users will be prompted to activate."
+  }
+}
+

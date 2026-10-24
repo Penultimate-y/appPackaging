@@ -23,6 +23,5 @@ Thumbs.db
 *.pfx
 *.key
 *.pem
-
-# Large nested repo / staging area (has its own .git, excluded from this repo)
-appPackaging-staging/
+# Backup of appPackaging-staging's original inner .git (preserved locally, not tracked)
+appPackaging-staging/.git_backup_staging/

@@ -1,0 +1,8 @@
+Stage the BeyondTrust Remote Support Representative Console installer here.
+
+Required file: sra-con-installer.exe (the Windows representative console build downloaded
+from your BeyondTrust appliance). This package is OFFLINE-ONLY - the installer is a
+per-appliance build with no public download URL, so it must be present in this folder for
+the package to install.
+
+Refresh this file whenever the BeyondTrust appliance is upgraded, then rebuild the .intunewin.

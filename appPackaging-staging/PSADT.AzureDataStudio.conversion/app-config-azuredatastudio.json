@@ -1,0 +1,49 @@
+{
+  "AppInfo": {
+    "Vendor": "Microsoft",
+    "Name": "Azure Data Studio",
+    "Version": "Latest",
+    "Architecture": "x64",
+    "Category": "Developer Tools"
+  },
+  "Installation": {
+    "Type": "Download",
+    "Resolver": {
+      "Type": "DirectUrl",
+      "Url": "https://go.microsoft.com/fwlink/?linkid=2274139"
+    },
+    "InstallerType": "EXE",
+    "InstallerFile": "azuredatastudio-setup.exe",
+    "SilentArgs": [
+      "/VERYSILENT",
+      "/NORESTART",
+      "/MERGETASKS=!runcode"
+    ],
+    "ProcessesToClose": [
+      "azuredatastudio"
+    ],
+    "InstallContext": "System",
+    "RequireAdmin": true,
+    "OfflineFallback": "Stage the installer in the package Files folder to bypass the download."
+  },
+  "Uninstall": {
+    "Type": "ExePath",
+    "Path": "$env:ProgramFiles\\Azure Data Studio\\unins000.exe",
+    "Args": [
+      "/VERYSILENT",
+      "/NORESTART"
+    ]
+  },
+  "Detection": {
+    "Type": "File",
+    "Path": "$env:ProgramFiles\\Azure Data Studio\\azuredatastudio.exe"
+  },
+  "Provenance": {
+    "LegacySources": [
+      "legacy.AzureDataStudio"
+    ],
+    "UrlVerified": true,
+    "Notes": "Azure Data Studio is retired by Microsoft (EOL Feb 2026). Prefer PSADT.VSCode with the MSSQL extension for new deployments."
+  }
+}
+

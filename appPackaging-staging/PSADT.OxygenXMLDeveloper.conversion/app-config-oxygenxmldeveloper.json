@@ -1,0 +1,46 @@
+{
+  "AppInfo": {
+    "Vendor": "Syncro Soft",
+    "Name": "Oxygen XML Developer",
+    "Version": "Latest",
+    "Architecture": "x64",
+    "Category": "Developer Tools"
+  },
+  "Installation": {
+    "Type": "Download",
+    "Resolver": {
+      "Type": "FilesOnly",
+      "SourceUrl": "https://www.oxygenxml.com/xml_developer/download_oxygenxml_developer.html"
+    },
+    "InstallerType": "EXE",
+    "InstallerFile": "oxygen-developer-setup.exe",
+    "SilentArgs": [
+      "-q",
+      "-dir",
+      "$env:ProgramFiles\\Oxygen XML Developer"
+    ],
+    "ProcessesToClose": [
+      "oxygenDeveloper"
+    ],
+    "InstallContext": "System",
+    "RequireAdmin": true,
+    "OfflineFallback": "Stage the installer in the package Files folder to bypass the download."
+  },
+  "Uninstall": {
+    "Type": "RegistrySearch",
+    "DisplayNamePattern": "Oxygen XML Developer"
+  },
+  "Detection": {
+    "Type": "RegistrySearch",
+    "DisplayNamePattern": "Oxygen XML Developer"
+  },
+  "Provenance": {
+    "LegacySources": [
+      "legacy.OxygenXMLDeveloper",
+      "legacy.XLM Dev"
+    ],
+    "UrlVerified": false,
+    "Notes": "OFFLINE-ONLY package. Confirmed by probe: the InstData direct paths return HTTP 404, so the installer filename is release-specific and must be taken from the vendor download page. Licensed product - the legacy folder used an unlicensed-mode batch file; supply a licence key or licence servlet as a separate configuration step."
+  }
+}
+

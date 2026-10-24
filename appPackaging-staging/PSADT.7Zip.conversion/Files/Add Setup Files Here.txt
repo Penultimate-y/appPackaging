@@ -1,0 +1,1 @@
+Optional: stage the vendor installer (.msi/.exe/.zip) here to install without downloading.

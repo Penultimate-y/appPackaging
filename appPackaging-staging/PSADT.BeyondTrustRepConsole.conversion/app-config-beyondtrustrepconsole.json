@@ -1,0 +1,44 @@
+{
+  "AppInfo": {
+    "Vendor": "BeyondTrust",
+    "Name": "Remote Support Representative Console",
+    "Version": "Appliance",
+    "Architecture": "x64",
+    "Category": "Remote Access"
+  },
+  "Installation": {
+    "Type": "Download",
+    "Resolver": {
+      "Type": "FilesOnly",
+      "SourceUrl": "Download the Representative Console installer (sra-con-installer.exe) from your BeyondTrust Remote Support appliance. It is a per-appliance build with no public download URL."
+    },
+    "InstallerType": "EXE",
+    "InstallerFile": "sra-con-installer.exe",
+    "SilentArgs": [
+      "/S"
+    ],
+    "ProcessesToClose": [
+      "scc",
+      "bomgar-scc",
+      "BeyondTrustRepConsole",
+      "representative"
+    ],
+    "InstallContext": "System",
+    "RequireAdmin": true,
+    "OfflineFallback": "This package is offline-only. The appliance-specific installer must be staged in Files\\; there is no download fallback."
+  },
+  "Uninstall": {
+    "Type": "RegistrySearch",
+    "DisplayNamePattern": "BeyondTrust|Bomgar|Representative Console",
+    "Args": ["/S"]
+  },
+  "Detection": {
+    "Type": "RegistrySearch",
+    "DisplayNamePattern": "BeyondTrust|Bomgar|Representative Console"
+  },
+  "Provenance": {
+    "LegacySources": ["legacy.Beyond trust"],
+    "UrlVerified": false,
+    "Notes": "OFFLINE-ONLY / APPLIANCE-SPECIFIC. sra-con-installer.exe is an NSIS (Nullsoft) installer signed by BeyondTrust Corporation, tied to a specific appliance hostname - no public download URL. Silent install '/S', silent uninstall via the bundled NSIS Uninstall.exe '/S'. The uninstall-registry DisplayName is per-site (site hostname under a BeyondTrust/Bomgar grouping); confirm the exact DisplayName in pilot and tighten the pattern. Refresh the staged media when the appliance is upgraded."
+  }
+}

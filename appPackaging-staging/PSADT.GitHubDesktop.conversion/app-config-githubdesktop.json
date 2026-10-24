@@ -1,0 +1,41 @@
+{
+  "AppInfo": {
+    "Vendor": "GitHub",
+    "Name": "GitHub Desktop",
+    "Version": "Latest",
+    "Architecture": "x64",
+    "Category": "Developer Tools"
+  },
+  "Installation": {
+    "Type": "Download",
+    "Resolver": {
+      "Type": "DirectUrl",
+      "Url": "https://central.github.com/deployments/desktop/desktop/latest/win32"
+    },
+    "InstallerType": "EXE",
+    "InstallerFile": "GitHubDesktopSetup-x64.exe",
+    "SilentArgs": [
+      "--silent"
+    ],
+    "ProcessesToClose": [
+      "GitHubDesktop"
+    ],
+    "InstallContext": "User",
+    "RequireAdmin": false,
+    "OfflineFallback": "Stage the installer in the package Files folder to bypass the download."
+  },
+  "Uninstall": {
+    "Type": "RegistrySearch",
+    "DisplayNamePattern": "GitHub Desktop"
+  },
+  "Detection": {
+    "Type": "File",
+    "Path": "$env:LOCALAPPDATA\\GitHubDesktop\\GitHubDesktop.exe"
+  },
+  "Provenance": {
+    "LegacySources": [],
+    "UrlVerified": true,
+    "Notes": "Squirrel per-user installer; installs to LocalAppData and self-updates. Deploy in user context."
+  }
+}
+

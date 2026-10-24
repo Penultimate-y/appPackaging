@@ -1,0 +1,50 @@
+{
+  "AppInfo": {
+    "Vendor": "Wireshark Foundation",
+    "Name": "Wireshark",
+    "Version": "Latest",
+    "Architecture": "x64",
+    "Category": "Network Tools"
+  },
+  "Installation": {
+    "Type": "Download",
+    "Resolver": {
+      "Type": "DirectUrl",
+      "Url": "https://2.na.dl.wireshark.org/win64/Wireshark-latest-x64.exe"
+    },
+    "InstallerType": "EXE",
+    "InstallerFile": "Wireshark-x64.exe",
+    "SilentArgs": [
+      "/S",
+      "/desktopicon=no",
+      "/quicklaunchicon=no"
+    ],
+    "ProcessesToClose": [
+      "Wireshark",
+      "dumpcap",
+      "tshark"
+    ],
+    "InstallContext": "System",
+    "RequireAdmin": true,
+    "OfflineFallback": "Stage the installer in the package Files folder to bypass the download."
+  },
+  "Uninstall": {
+    "Type": "ExePath",
+    "Path": "$env:ProgramFiles\\Wireshark\\uninstall.exe",
+    "Args": [
+      "/S"
+    ]
+  },
+  "Detection": {
+    "Type": "File",
+    "Path": "$env:ProgramFiles\\Wireshark\\Wireshark.exe"
+  },
+  "Provenance": {
+    "LegacySources": [
+      "legacy.Andretti_Installs"
+    ],
+    "UrlVerified": true,
+    "Notes": "Wireshark mirrors publish a '-latest-' alias. Npcap is bundled but prompts; deploy Npcap separately if silent capture support is required."
+  }
+}
+

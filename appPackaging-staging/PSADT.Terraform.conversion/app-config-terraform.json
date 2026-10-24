@@ -1,0 +1,45 @@
+{
+  "AppInfo": {
+    "Vendor": "HashiCorp",
+    "Name": "Terraform",
+    "Version": "Latest",
+    "Architecture": "x64",
+    "Category": "Developer Tools"
+  },
+  "Installation": {
+    "Type": "Download",
+    "Resolver": {
+      "Type": "HashiCorpZip",
+      "Product": "terraform",
+      "FilePattern": "_windows_amd64\\.zip$"
+    },
+    "InstallerType": "ZIP",
+    "InstallerFile": "terraform_windows_amd64.zip",
+    "SilentArgs": [],
+    "ProcessesToClose": [
+      "terraform"
+    ],
+    "InstallContext": "System",
+    "RequireAdmin": true,
+    "OfflineFallback": "Stage the installer in the package Files folder to bypass the download.",
+    "InstallDir": "$env:ProgramFiles\\Terraform"
+  },
+  "Uninstall": {
+    "Type": "Directory",
+    "Path": "$env:ProgramFiles\\Terraform",
+    "RemoveFromMachinePath": true
+  },
+  "Detection": {
+    "Type": "File",
+    "Path": "$env:ProgramFiles\\Terraform\\terraform.exe"
+  },
+  "Provenance": {
+    "LegacySources": [
+      "legacy.Terraform",
+      "legacy.Terraform_Envi_Variable"
+    ],
+    "UrlVerified": true,
+    "Notes": "Single-binary zip deployment. Replaces the legacy environment-variable-only script by doing both the binary and the PATH entry."
+  }
+}
+

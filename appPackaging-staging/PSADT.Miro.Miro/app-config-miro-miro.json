@@ -1,0 +1,42 @@
+{
+  "AppInfo": {
+    "Vendor": "Miro",
+    "Name": "Miro",
+    "Version": "Latest",
+    "Architecture": "x64",
+    "Category": "Business & Collaboration"
+  },
+  "Installation": {
+    "Type": "Download",
+    "Resolver": {
+      "Type": "DirectUrl",
+      "Url": "https://desktop.miro.com/platforms/win-nsis/Miro-setup.msi"
+    },
+    "InstallerType": "MSI",
+    "InstallerFile": "Miro-setup.msi",
+    "SilentArgs": [
+      "ALLUSERS=1",
+      "MSIINSTALLPERUSER="
+    ],
+    "ProcessesToClose": [
+      "Miro"
+    ],
+    "InstallContext": "System",
+    "RequireAdmin": true,
+    "OfflineFallback": "Stage the installer in the package Files folder to bypass the download."
+  },
+  "Uninstall": {
+    "Type": "RegistrySearch",
+    "DisplayNamePattern": "^Miro$"
+  },
+  "Detection": {
+    "Type": "RegistrySearch",
+    "DisplayNamePattern": "^Miro$"
+  },
+  "Provenance": {
+    "LegacySources": [],
+    "UrlVerified": true,
+    "Notes": "Regenerated from miro-config.json after the PSADT.Miro.Miro folder was lost. Vendor evergreen machine-scope MSI (ALLUSERS=1, MSIINSTALLPERUSER cleared) from the Miro desktop download endpoint. Product code recorded in miro-config.json was {0D7C44B6-BB8D-5FF2-87B3-6A0C0F56F51A} (v0.11.168); detection is kept on DisplayName so it survives version bumps - switch to a ProductCode MSI detection in Intune if an exact-version gate is required."
+  }
+}
+

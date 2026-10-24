@@ -1,0 +1,47 @@
+{
+  "AppInfo": {
+    "Vendor": "OpenLens",
+    "Name": "OpenLens",
+    "Version": "Latest",
+    "Architecture": "x64",
+    "Category": "Developer Tools"
+  },
+  "Installation": {
+    "Type": "Download",
+    "Resolver": {
+      "Type": "GitHubRelease",
+      "Repo": "MuhammedKalkan/OpenLens",
+      "AssetPattern": "^OpenLens\\.Setup\\.[\\d\\.\\-]+\\.exe$"
+    },
+    "InstallerType": "EXE",
+    "InstallerFile": "OpenLens-setup.exe",
+    "SilentArgs": [
+      "/S"
+    ],
+    "ProcessesToClose": [
+      "OpenLens"
+    ],
+    "InstallContext": "User",
+    "RequireAdmin": false,
+    "OfflineFallback": "Stage the installer in the package Files folder to bypass the download."
+  },
+  "Uninstall": {
+    "Type": "ExePath",
+    "Path": "$env:LOCALAPPDATA\\Programs\\OpenLens\\Uninstall OpenLens.exe",
+    "Args": [
+      "/S"
+    ]
+  },
+  "Detection": {
+    "Type": "File",
+    "Path": "$env:LOCALAPPDATA\\Programs\\OpenLens\\OpenLens.exe"
+  },
+  "Provenance": {
+    "LegacySources": [
+      "legacy.OpenLens"
+    ],
+    "UrlVerified": true,
+    "Notes": "Per-user Electron/NSIS install. Community build of Lens."
+  }
+}
+

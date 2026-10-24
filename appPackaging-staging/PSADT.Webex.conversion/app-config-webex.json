@@ -1,0 +1,47 @@
+{
+  "AppInfo": {
+    "Vendor": "Cisco",
+    "Name": "Webex",
+    "Version": "Latest",
+    "Architecture": "x64",
+    "Category": "Productivity"
+  },
+  "Installation": {
+    "Type": "Download",
+    "Resolver": {
+      "Type": "DirectUrl",
+      "Url": "https://binaries.webex.com/WebexTeamsDesktop-Windows-Gold/Webex.msi"
+    },
+    "InstallerType": "MSI",
+    "InstallerFile": "Webex.msi",
+    "SilentArgs": [
+      "ALLUSERS=1",
+      "ACCEPT_EULA=TRUE",
+      "AUTOSTART_WITH_WINDOWS=false"
+    ],
+    "ProcessesToClose": [
+      "Webex",
+      "CiscoCollabHost",
+      "atmgr"
+    ],
+    "InstallContext": "System",
+    "RequireAdmin": true,
+    "OfflineFallback": "Stage the installer in the package Files folder to bypass the download."
+  },
+  "Uninstall": {
+    "Type": "RegistrySearch",
+    "DisplayNamePattern": "^Webex$|Cisco Webex"
+  },
+  "Detection": {
+    "Type": "RegistrySearch",
+    "DisplayNamePattern": "^Webex$|Cisco Webex"
+  },
+  "Provenance": {
+    "LegacySources": [
+      "legacy.WebEx"
+    ],
+    "UrlVerified": true,
+    "Notes": "Machine-wide 'Gold' MSI channel (WebexTeamsDesktop path - the WebexDesktop path returns HTTP 403). Replaces legacy uninstall-only scripts."
+  }
+}
+

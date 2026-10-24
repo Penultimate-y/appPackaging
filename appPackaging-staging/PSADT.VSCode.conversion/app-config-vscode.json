@@ -1,0 +1,49 @@
+{
+  "AppInfo": {
+    "Vendor": "Microsoft",
+    "Name": "Visual Studio Code",
+    "Version": "Latest",
+    "Architecture": "x64",
+    "Category": "Developer Tools"
+  },
+  "Installation": {
+    "Type": "Download",
+    "Resolver": {
+      "Type": "DirectUrl",
+      "Url": "https://update.code.visualstudio.com/latest/win32-x64/stable"
+    },
+    "InstallerType": "EXE",
+    "InstallerFile": "VSCodeSetup-x64.exe",
+    "SilentArgs": [
+      "/VERYSILENT",
+      "/NORESTART",
+      "/MERGETASKS=!runcode,addcontextmenufiles,addcontextmenufolders,associatewithfiles,addtopath"
+    ],
+    "ProcessesToClose": [
+      "Code"
+    ],
+    "InstallContext": "System",
+    "RequireAdmin": true,
+    "OfflineFallback": "Stage the installer in the package Files folder to bypass the download."
+  },
+  "Uninstall": {
+    "Type": "ExePath",
+    "Path": "$env:ProgramFiles\\Microsoft VS Code\\unins000.exe",
+    "Args": [
+      "/VERYSILENT",
+      "/NORESTART"
+    ]
+  },
+  "Detection": {
+    "Type": "File",
+    "Path": "$env:ProgramFiles\\Microsoft VS Code\\Code.exe"
+  },
+  "Provenance": {
+    "LegacySources": [
+      "legacy.VisualCode_installer"
+    ],
+    "UrlVerified": true,
+    "Notes": "Official evergreen endpoint always serves current stable System x64 installer."
+  }
+}
+

@@ -1,0 +1,49 @@
+{
+  "AppInfo": {
+    "Vendor": "Windsurf",
+    "Name": "Windsurf Editor",
+    "Version": "Latest",
+    "Architecture": "x64",
+    "Category": "Developer Tools"
+  },
+  "Installation": {
+    "Type": "Download",
+    "Resolver": {
+      "Type": "JsonProperty",
+      "ApiUrl": "https://windsurf-stable.codeium.com/api/update/win32-x64-user/stable/latest",
+      "UrlProperty": "url",
+      "VersionProperty": "productVersion"
+    },
+    "InstallerType": "EXE",
+    "InstallerFile": "WindsurfUserSetup-x64.exe",
+    "SilentArgs": [
+      "/VERYSILENT",
+      "/NORESTART",
+      "/MERGETASKS=!runcode"
+    ],
+    "ProcessesToClose": [
+      "Windsurf"
+    ],
+    "InstallContext": "User",
+    "RequireAdmin": false,
+    "OfflineFallback": "Stage the installer in the package Files folder to bypass the download."
+  },
+  "Uninstall": {
+    "Type": "RegistrySearch",
+    "DisplayNamePattern": "Windsurf|Devin"
+  },
+  "Detection": {
+    "Type": "RegistrySearch",
+    "DisplayNamePattern": "Windsurf|Devin"
+  },
+  "Provenance": {
+    "LegacySources": [
+      "legacy.Windsurf",
+      "legacy.Codeium",
+      "legacy.Kiro_Windsurf"
+    ],
+    "UrlVerified": true,
+    "Notes": "Resolved from the vendor's own stable update API (the windsurf.com download page returns HTTP 403 to scripted clients). NOTE: the vendor is rebranding Windsurf to Devin - the API currently returns a DevinUserSetup-x64 installer, so detection and uninstall match on either name. Confirm the installed display name in your pilot group."
+  }
+}
+

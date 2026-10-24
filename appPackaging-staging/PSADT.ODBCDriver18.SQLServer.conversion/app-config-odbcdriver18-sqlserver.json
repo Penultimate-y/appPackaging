@@ -1,0 +1,43 @@
+{
+  "AppInfo": {
+    "Vendor": "Microsoft",
+    "Name": "ODBC Driver 18 for SQL Server",
+    "Version": "Latest",
+    "Architecture": "x64",
+    "Category": "Data Connectivity"
+  },
+  "Installation": {
+    "Type": "Download",
+    "Resolver": {
+      "Type": "DirectUrl",
+      "Url": "https://go.microsoft.com/fwlink/?linkid=2249004"
+    },
+    "InstallerType": "MSI",
+    "InstallerFile": "msodbcsql18.msi",
+    "SilentArgs": [
+      "IACCEPTMSODBCSQLLICENSETERMS=YES",
+      "ADDLOCAL=ALL"
+    ],
+    "ProcessesToClose": [],
+    "InstallContext": "System",
+    "RequireAdmin": true,
+    "OfflineFallback": "Stage the installer in the package Files folder to bypass the download."
+  },
+  "Uninstall": {
+    "Type": "RegistrySearch",
+    "DisplayNamePattern": "Microsoft ODBC Driver 18 for SQL Server"
+  },
+  "Detection": {
+    "Type": "RegistrySearch",
+    "DisplayNamePattern": "Microsoft ODBC Driver 18 for SQL Server"
+  },
+  "Provenance": {
+    "LegacySources": [
+      "legacy.ODBC",
+      "legacy.SQL 11 ODBC"
+    ],
+    "UrlVerified": true,
+    "Notes": "Supersedes the out-of-support ODBC Driver 11. DSN creation is a separate configuration step (see legacy.TRS ODBC_Updated)."
+  }
+}
+

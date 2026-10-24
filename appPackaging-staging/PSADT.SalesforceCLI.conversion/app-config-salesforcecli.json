@@ -1,0 +1,41 @@
+{
+  "AppInfo": {
+    "Vendor": "Salesforce",
+    "Name": "Salesforce CLI",
+    "Version": "Latest",
+    "Architecture": "x64",
+    "Category": "Developer Tools"
+  },
+  "Installation": {
+    "Type": "Download",
+    "Resolver": {
+      "Type": "DirectUrl",
+      "Url": "https://developer.salesforce.com/media/salesforce-cli/sf/channels/stable/sf-x64.exe"
+    },
+    "InstallerType": "EXE",
+    "InstallerFile": "sf-x64.exe",
+    "SilentArgs": [
+      "/S"
+    ],
+    "ProcessesToClose": [],
+    "InstallContext": "System",
+    "RequireAdmin": true,
+    "OfflineFallback": "Stage the installer in the package Files folder to bypass the download."
+  },
+  "Uninstall": {
+    "Type": "RegistrySearch",
+    "DisplayNamePattern": "Salesforce CLI"
+  },
+  "Detection": {
+    "Type": "File",
+    "Path": "$env:ProgramFiles\\sf\\bin\\sf.cmd"
+  },
+  "Provenance": {
+    "LegacySources": [
+      "legacy.SalesForceCLI"
+    ],
+    "UrlVerified": true,
+    "Notes": "Stable channel evergreen installer."
+  }
+}
+

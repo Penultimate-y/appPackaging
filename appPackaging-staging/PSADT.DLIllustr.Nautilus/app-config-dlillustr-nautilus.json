@@ -1,0 +1,43 @@
+{
+  "AppInfo": {
+    "Vendor": "Delaware Life",
+    "Name": "Nautilus-DLIllustr",
+    "Version": "Latest",
+    "Architecture": "x64",
+    "Category": "Business & Collaboration"
+  },
+  "Installation": {
+    "Type": "Download",
+    "Resolver": {
+      "Type": "FilesOnly",
+      "SourceUrl": "Nautilus-DLIllustr is the internal Delaware Life / Group 1001 Nautilus product line of the illustration tool, with no public download URL. Obtain the current 'Nautilus-DLIllustr v<version>.msi' from the internal software distribution share and stage it in the package Files folder."
+    },
+    "InstallerType": "MSI",
+    "InstallerFile": "Nautilus-DLIllustr v3.8.0.msi",
+    "SilentArgs": [
+      "ALLUSERS=1"
+    ],
+    "ProcessesToClose": [
+      "DLIllustr"
+    ],
+    "InstallContext": "System",
+    "RequireAdmin": true,
+    "OfflineFallback": "Stage the installer in the package Files folder to bypass the download."
+  },
+  "Uninstall": {
+    "Type": "RegistrySearch",
+    "DisplayNamePattern": "^Nautilus-DLIllustr v"
+  },
+  "Detection": {
+    "Type": "RegistrySearch",
+    "DisplayNamePattern": "^Nautilus-DLIllustr v"
+  },
+  "Provenance": {
+    "LegacySources": [
+      "legacy.DL_illustr"
+    ],
+    "UrlVerified": false,
+    "Notes": "OFFLINE-ONLY / INTERNAL. Nautilus variant of DLIllustr (separate product from the base PSADT.DLIllustr). Current staged media: 'Nautilus-DLIllustr v3.8.0.msi' - ProductName 'Nautilus-DLIllustr v3.8.0', ProductCode {95A90A7F-FA7D-4E04-B06F-6B6EE432744F}, UpgradeCode {05B7485E-D6EE-4E89-AE77-E8A26E73B617} (shared with base DLIllustr), Manufacturer 'Delaware Life', v3.8.0. InstallShield MSI, installs silently with ALLUSERS=1. ProductName embeds the version so detection is '^Nautilus-DLIllustr v'. NOTE: this ProductCode {95A90A7F-...} is the same GUID the legacy.DL_illustr install script removed as a 'legacy InstallShield key' before installing the base product - so the two products historically conflicted. Pilot base + Nautilus together to confirm current coexistence/upgrade behaviour. For an exact-version gate in Intune use ProductCode {95A90A7F-FA7D-4E04-B06F-6B6EE432744F}. No public download URL - media must be staged in Files\\."
+  }
+}
+

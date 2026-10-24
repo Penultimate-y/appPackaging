@@ -1,0 +1,46 @@
+{
+  "AppInfo": {
+    "Vendor": "Scooter Software",
+    "Name": "Beyond Compare 4",
+    "Version": "Latest",
+    "Architecture": "x64",
+    "Category": "Developer Tools"
+  },
+  "Installation": {
+    "Type": "Download",
+    "Resolver": {
+      "Type": "PinnedUrl",
+      "Url": "https://www.scootersoftware.com/files/BCompare-4.4.7.28397.exe",
+      "PinnedVersion": "4.4.7.28397"
+    },
+    "InstallerType": "EXE",
+    "InstallerFile": "BCompare-setup.exe",
+    "SilentArgs": [
+      "/SILENT",
+      "/NORESTART"
+    ],
+    "ProcessesToClose": [
+      "BCompare",
+      "BComp"
+    ],
+    "InstallContext": "System",
+    "RequireAdmin": true,
+    "OfflineFallback": "Stage the installer in the package Files folder to bypass the download."
+  },
+  "Uninstall": {
+    "Type": "RegistrySearch",
+    "DisplayNamePattern": "Beyond Compare"
+  },
+  "Detection": {
+    "Type": "RegistrySearch",
+    "DisplayNamePattern": "Beyond Compare"
+  },
+  "Provenance": {
+    "LegacySources": [
+      "legacy.Beyond Compare"
+    ],
+    "UrlVerified": false,
+    "Notes": "URL NOT VERIFIED and version-pinned. Licensed product - deploy the licence key separately. Update PinnedUrl per release."
+  }
+}
+
